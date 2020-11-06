@@ -32,7 +32,7 @@ columns = ['type', 'width', 'height', 'scaleX', 'strokeWidth', 'path']
 
 app.layout = html.Div([
     html.Hr(),
-    html.H1('Precision agriculture image Segmenation tool'),
+    html.H1('Precision Agriculture Image Segmenation Tool'),
     html.Hr(),
     html.H2('Upload RGB and NDVI images in the dropbox below'),
     html.Div([
@@ -44,8 +44,8 @@ app.layout = html.Div([
         ]),
         style={
             'width': '100%',
-            'height': '60px',
-            'lineHeight': '60px',
+            'height': '200px',
+            'lineHeight': '180px',
             'borderWidth': '1px',
             'borderStyle': 'dashed',
             'borderRadius': '5px',
@@ -62,8 +62,8 @@ app.layout = html.Div([
         ]),
         style={
             'width': '100%',
-            'height': '60px',
-            'lineHeight': '60px',
+            'height': '200px',
+            'lineHeight': '180px',
             'borderWidth': '1px',
             'borderStyle': 'dashed',
             'borderRadius': '5px',
@@ -77,7 +77,7 @@ app.layout = html.Div([
         html.Div(id='output-image-upload'),
         html.Div(id='output-NDVIimage-upload'),
         ],style={'height':'100', 'width':'100'}),
-          ], style={'textAlign': 'center','display': 'block', 'margin-left': 'auto', 'margin-right': 'auto', 'width': '32.5%'}, className="five columns"),
+          ], style={'textAlign': 'center','display': 'block', 'margin-left': 'auto', 'margin-right': 'auto', 'width': '32.5%','background-image': 'url(https://www.pexels.com/photo/scenic-view-of-agricultural-field-against-sky-during-sunset-325944/)'}, className="five columns"),
 
     html.Div([
     html.Img(id='segmentation-img', width=100),
@@ -112,9 +112,10 @@ def parse_contentsNDVI(contentsNDVI, filenameNDVI, dateNDVI):
     return html.Div([
         html.H5(filenameNDVI),
         html.H6(datetime.datetime.fromtimestamp(dateNDVI)),
-        html.Img(src=contentsNDVI),
+        html.Div(html.Img(src=contentsNDVI, style={'height':'100%', 'width':'100%'})),
+        #html.Img(src=contentsNDVI),
         html.Hr(),
-    ])
+    ],style={'height':'500', 'width':'500'})
 
 
 @app.callback(Output('output-NDVIimage-upload', 'children'),
@@ -153,12 +154,16 @@ def segmentation(string, content, NDVIcontent):
         im_out = thresh | im_floodfill_inv
         RGBimg = cv2.bitwise_and(i, i, mask=im_out)
         RGBimg = cv2.cvtColor(RGBimg, cv2.COLOR_BGR2RGB)
+        target_size = (RGBimg.shape[1],(RGBimg.shape[0]))
+        iNDVI = cv2.resize(iNDVI, target_size)
+        NDVIimg = cv2.bitwise_and(iNDVI, iNDVI, mask=im_out)
+        NDVIimg = cv2.cvtColor(NDVIimg, cv2.COLOR_BGR2RGB)
 
         contours = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
-        cnts = sorted(contours, key=lambda c: cv2.contourArea(c), reverse=True)
+        cnts = sorted(contours, key=lambda c: cv2.contourArea(c), reverse=True)  # finds the largest selection, which is a limitation to multiple selection (will be changed in the future versions)
         (x,y,w,h) = cv2.boundingRect(cnts[0])
-        ROIRGB = cv2.cvtColor(i[y:y+h, x:x+w], cv2.COLOR_BGR2RGB)
-        ROINDVI = cv2.cvtColor(iNDVI[y:y+h, x:x+w], cv2.COLOR_BGR2RGB)
+        ROIRGB = RGBimg[y:y+h, x:x+w]
+        ROINDVI = NDVIimg[y:y+h, x:x+w]
     else:
         raise PreventUpdate
     return array_to_data_url(img_as_ubyte(ROIRGB)), array_to_data_url(img_as_ubyte(ROINDVI)) 
