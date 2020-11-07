@@ -1,0 +1,5 @@
+dash
+dash_canvas
+pillow
+numpy
+scipy
