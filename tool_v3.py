@@ -32,15 +32,15 @@ columns = ['type', 'width', 'height', 'scaleX', 'strokeWidth', 'path']
 
 app.layout = html.Div([
     html.Hr(),
-    html.H1('Precision Agriculture Image Segmenation Tool'),
+    html.H1('Semi-automatic Paired Dataset Creation Tool'),
     html.Hr(),
-    html.H2('Upload RGB and NDVI images in the dropbox below'),
+    html.H2('Upload Color and CIR Images in Below Boxes'),
     html.Div([
       dcc.Upload(
         id='upload-image',
         children=html.Div([
             'Drag and Drop or ',
-            html.A('Select RGB image')
+            html.A('Select color image')
         ]),
         style={
             'width': '100%',
@@ -58,7 +58,7 @@ app.layout = html.Div([
         id='upload-NDVIimage',
         children=html.Div([
             'Drag and Drop or ',
-            html.A('Select NDVI image')
+            html.A('Select CIR image')
         ]),
         style={
             'width': '100%',
