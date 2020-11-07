@@ -1,6 +1,6 @@
 # RGB and CIR Image Cropping Tool
 
-Python DASH interface to crop ROI from RGB and corresponding CIR image
+<i>Python DASH interface to crop ROI from RGB and corresponding CIR image</i>
 
 <br>
 After running the python file, copy the generated local host url to a browser to access the application interface 
@@ -11,12 +11,12 @@ Format: ![Alt Text](url)
 
 <br>
 
-Step 1: Drop or Uplaod RGB image to RGB dropbox <br>
-Step 2: Click upload RGB button <br>
-Step 3: Drop or Upload CIR image to NDVI dropbox <br>
-Setp 4: Draw circles around the Region Of Interest (ROI) <br>
-Step 5: Click save to generate the segmented image from RGB and corresponding NDVI image <br>
-Setp 6: Right Click to save <br>
+<b>Step 1:</b> Drop or Uplaod RGB image to RGB dropbox <br>
+<b>Step 2:</b> Click upload RGB button <br>
+<b>Step 3:</b> Drop or Upload CIR image to NDVI dropbox <br>
+<b>Setp 4:</b> Draw circles around the Region Of Interest (ROI) <br>
+<b>Step 5:</b> Click save to generate the segmented image from RGB and corresponding NDVI image <br>
+<b>Setp 6:</b> Right Click to save <br>
 
 <br>
 <br>
