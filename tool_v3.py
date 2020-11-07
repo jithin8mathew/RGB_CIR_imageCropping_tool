@@ -72,7 +72,7 @@ app.layout = html.Div([
         },
         multiple=False
     ),
-    html.Button('Upload RGB', id='button'),
+    html.Button('Upload', id='button'),
     html.Div([
         html.Div(id='output-image-upload'),
         html.Div(id='output-NDVIimage-upload'),
