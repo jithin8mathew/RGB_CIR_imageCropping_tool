@@ -5,6 +5,7 @@
 <br>
 After running the python file, copy the generated local host url to a browser to access the application interface 
 <br>
+<br>
 
 ![Screenshot_2020-11-06 Dash](https://github.com/jithin8mathew/RGB_CIR_imageCropping_tool/blob/main/images/Screenshot_2020-11-06%20Dash.png)
 Format: ![Alt Text](url)
