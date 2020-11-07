@@ -5,7 +5,7 @@ Python DASH interface to crop ROI from RGB and corresponding CIR image
 <br>
 After running the python file, copy the generated local host url to a browser to access the application interface 
 <br>
-![screenshot](https://github.com/jithin8mathew/Crop-point-cloud-data-analysis/blob/master/output/wheat_2Dplot.png)
+![screenshot](https://github.com/jithin8mathew/RGB_CIR_imageCropping_tool/blob/main/images/Screenshot_2020-11-06%20Dash.png)
 Format: ![Alt Text](url)
 <br>
 
